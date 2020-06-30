@@ -120,7 +120,7 @@ rc('font', family= font_name)
 # 자주사용되는 토근 5000개를 사용해서 데이터를 백터화 시킨다
 # 문서 집합에서 단어 토큰을 생서하고 각 단어의 수를 세어
 # BOW(Bag of Words) 인코딩한 백터를 만드는역할을한다
-select_words = [f[0] for f in text.vocab().most_common(100)]
+select_words = [f[0] for f in text.vocab().most_common(5000)]
 print('type:', type(select_words))
 print('len:', len(select_words))
 print('data:', select_words[:10])
@@ -162,7 +162,7 @@ y_test = np.asarray(test_y).astype('float32')
 model = models.Sequential() # 모댈 생성
 
 # 모델 층을 구성
-model.add(layers.Dense(64, activation='relu', input_shape=(100,))) # 1층 생성
+model.add(layers.Dense(64, activation='relu', input_shape=(5000,))) # 1층 생성
 model.add(layers.Dense(64, activation='relu'))# 2층 생성
 model.add(layers.Dense(1, activation='sigmoid')) # 3층생성
 
